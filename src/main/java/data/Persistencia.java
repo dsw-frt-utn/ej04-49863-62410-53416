@@ -25,19 +25,7 @@ public class Persistencia {
     }
     
     private static void inicializarVehiculos(){
-        Sucursal s1 = sucursales.get(0);
-        Sucursal s2 = sucursales.get(1);
-        
-        VehiculoElectrico v1 = new VehiculoElectrico("AE123FG", "Renault", "Kangoo E-Tech", 2020, 1000, s1, 16);
-        VehiculoElectrico v2 = new VehiculoElectrico("AF456HI", "Ford", "E-Transit", 2021, 1300, s2, 16);
 
-        VehiculoCombustible v3 = new VehiculoCombustible("AC789JK", "Iveco", "Daily", 2023, 1200, s1, 8, 1.5);
-        VehiculoCombustible v4 = new VehiculoCombustible("AD321LM", "Mercedes", "Sprinter", 2020, 1200, s2, 7, 1);
-        
-        vehiculos.add(v1);
-        vehiculos.add(v2);
-        vehiculos.add(v3);
-        vehiculos.add(v4);
     }
     
     public static ArrayList<Vehiculo> getVehiculos(){
@@ -54,5 +42,13 @@ public class Persistencia {
         inicializarResponsables();
         inicializarSucursales();
         inicializarVehiculos();
+    }
+    
+    public static void agregarVehiculo(Vehiculo v){
+        vehiculos.add(v);
+    }
+    
+    public static ArrayList<Sucursal> getSucursales(){
+        return sucursales;
     }
 }
