@@ -1,7 +1,11 @@
 package views;
 
 import data.Persistencia;
+import domain.Marca;
+import domain.Sucursal;
 import domain.Vehiculo;
+import domain.VehiculoElectrico;
+import domain.VehiculoCombustible;
 import domain.VehiculoTipo;
 import java.util.ArrayList;
 import java.util.Map;
@@ -30,5 +34,22 @@ public class Controlador {
            }
         }
         return new double[] {consumoElectricos, consumoCombustible};
+    }
+    
+    public static void agregarVehiculo(VehiculoTipo tipo, String patente, String nombreMarca, String paisMarca, String modelo, int anio, double capacidadCarga, Sucursal sucursal, double parametroEspecifico, double litrosExtra){
+        
+        Marca marca = new Marca(nombreMarca, paisMarca);
+        Vehiculo v;
+        
+        if (tipo == VehiculoTipo.ELECTRICO){
+            v = new VehiculoElectrico(patente, marca, modelo, anio, capacidadCarga, sucursal, parametroEspecifico);
+        } else {
+            v = new VehiculoCombustible(patente, marca, modelo, anio, capacidadCarga, sucursal, parametroEspecifico, litrosExtra);
+        }
+        Persistencia.agregarVehiculo(v);
+    }
+    
+    public static ArrayList<Sucursal> getSucursales(){
+        return Persistencia.getSucursales();
     }
 }
